@@ -23,13 +23,13 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.broadcast.Broadcast;
+import org.apache.spark.sql.AnalysisException;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoder;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.catalyst.analysis.NoSuchTableException;
 import org.apache.spark.sql.functions;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import scala.Tuple2;
@@ -631,7 +631,7 @@ public abstract class AbstractConceptMaps<T extends IBaseResource,
       // Checked exceptions when calling into Scala upset the Java compiler,
       // hence the need for this workaround and re-throw to propagate unexpected
       // failures.
-      if (describeException instanceof NoSuchTableException) {
+      if (describeException instanceof AnalysisException) {
 
         hasExistingMaps = false;
 

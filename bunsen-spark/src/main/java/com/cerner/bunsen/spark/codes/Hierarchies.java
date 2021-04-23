@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.FilterFunction;
+import org.apache.spark.sql.AnalysisException;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoder;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.catalyst.analysis.NoSuchTableException;
 import scala.Tuple2;
 
 /**
@@ -435,7 +435,7 @@ public class Hierarchies {
 
     } catch (Exception describeException) {
 
-      if (describeException instanceof NoSuchTableException) {
+      if (describeException instanceof AnalysisException) {
 
         hasExistingAncestors = false;
 

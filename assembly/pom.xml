@@ -10,7 +10,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>Bunsen Distribution Assembly</name>
-  <description>Assemnly for distribution Bunsen artifacts.</description>
+  <description>Assembly for distribution Bunsen artifacts.</description>
 
   <build>
     <plugins>
